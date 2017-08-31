@@ -1,0 +1,146 @@
+.container
+  .row
+    .col-md-6
+      %button#url.btn.btn-success
+        Url
+      %button#text.btn.btn-success
+        Text
+      %button#contact.btn.btn-success
+        Vcard
+      %button#sms.btn.btn-success
+        SMS
+      %button#email.btn.btn-success
+        Email
+      %button#call.btn.btn-success
+        Call
+      %button#wifi.btn.btn-success
+        WiFi
+  %br
+  .row
+    .col-md-8
+      = form_tag("/qr_codes/create", format: :js ,method: :post, remote: true) do
+        =hidden_field_tag :type_name, "url"
+        .url_type.types
+          .row
+            .col-md-6
+              =label_tag :url
+              =text_field_tag :url_link, "",class:"form-control"
+
+        .text_type.types
+          .row
+            .col-md-6
+              =label_tag :text
+              =text_area_tag :text_content, "",class:"form-control"
+
+        .contact_type.types
+          .row
+            .col-md-6
+              =label_tag :first_name
+              =text_field_tag :first_name, "",class:"form-control"
+            .col-md-6
+              =label_tag :company
+              =text_field_tag :company, "",class:"form-control"
+            .col-md-6
+              =label_tag :last_name
+              =text_field_tag :last_name, "",class:"form-control"
+            .col-md-6
+              =label_tag :email_personal
+              =text_field_tag :personal_email, "",class:"form-control"
+            .col-md-6
+              =label_tag :title
+              =text_field_tag :title, "",class:"form-control"
+            .col-md-6
+              =label_tag :business_email
+              =text_field_tag :business_email, "",class:"form-control"
+            .col-md-6
+              =label_tag :street
+              =text_field_tag :street, "",class:"form-control"
+            .col-md-6
+              =label_tag :mobile
+              =text_field_tag :mobile, "",class:"form-control"
+            .col-md-6
+              =label_tag :zip_code
+              =text_field_tag :zip_code, "",class:"form-control"
+            .col-md-6
+              =label_tag :phone
+              =text_field_tag :phone, "",class:"form-control"
+            .col-md-6
+              =label_tag :city
+              =text_field_tag :city, "",class:"form-control"
+            .col-md-6
+              =label_tag :business_phone
+              =text_field_tag :business_phone, "",class:"form-control"
+            .col-md-6
+              =label_tag :country
+              =text_field_tag :country, "",class:"form-control"
+            .col-md-6
+              =label_tag :website
+              =text_field_tag :website, "",class:"form-control"
+        .sms_type.types
+          .row
+            .col-md-4
+              =label_tag :country_code
+              =text_field_tag :country_code, "",class:"form-control"
+            .col-md-4
+              =label_tag :area_code
+              =text_field_tag :area_code, "",class:"form-control"
+            .col-md-4
+              =label_tag :phone_number
+              =text_field_tag :phone_number, "",class:"form-control"
+            .col-md-12
+              =label_tag :text
+              =text_area_tag :message_content, "",class:"form-control"
+        .call_type.types
+          .row
+            .col-md-4
+              =label_tag :country_code
+              =text_field_tag :country_code_call, "",class:"form-control"
+            .col-md-4
+              =label_tag :area_code
+              =text_field_tag :area_code_call, "",class:"form-control"
+            .col-md-4
+              =label_tag :phone_number_call
+              =text_field_tag :phone_number_call, "",class:"form-control"
+        .event_type.types
+          .row
+            .col-md-12
+              =label_tag :description
+              =text_area_tag :description, "",class:"form-control"
+            .col-md-4
+              =label_tag :from
+              =text_field_tag :from_add, "",class:"form-control"
+            .col-md-4
+              =label_tag :to
+              =text_field_tag :to_add, "",class:"form-control"
+            .col-md-4
+              =label_tag :time
+              =text_field_tag :time, "",class:"form-control"
+        .email_type.types
+          .row
+            .col-md-6
+              =label_tag :email_email
+              =text_field_tag :email_email, "",class:"form-control"
+            .col-md-6
+              =label_tag :subject
+              =text_field_tag :subject, "",class:"form-control"
+            .col-md-12
+              =label_tag :content
+              =text_area_tag :email_content, "",class:"form-control"
+        .wifi_type.types
+          .row
+            .col-md-6
+              =label_tag :encryption
+              = select_tag :encryption, options_for_select([["WPA", "WPA"], ["WEP", "WEP"],['Unecrpted', "nopass"]])
+            .col-md-6
+              =label_tag :network_name
+              =text_field_tag :network_name, "",class:"form-control"
+            .col-md-6
+              =label_tag :password
+              =text_field_tag :password, "",class:"form-control"
+        %br
+          = submit_tag "Generate QR Code", class:"btn btn-warning" ,id:"submit_form"
+
+
+    .col-md-4
+      .div#image
+
